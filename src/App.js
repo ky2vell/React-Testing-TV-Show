@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Route, Switch } from 'react-router-dom';
 import Dropdown from 'react-dropdown';
 import parse from 'html-react-parser';
@@ -34,28 +35,30 @@ export default function App() {
   }
 
   return (
-    <div className='App'>
-      <Switch>
-        <Route path='/s:season/e:episode'>
-          <EpisodePage episodeList={episodeList} />
-        </Route>
-        <Route path='/'>
-          <img
-            className='poster-img'
-            src={show.image.original}
-            alt={show.name}
-          />
-          <h1>{show.name}</h1>
-          {parse(show.summary)}
-          <Dropdown
-            options={Object.keys(seasons)}
-            onChange={handleSelect}
-            value={selectedSeason || 'Select a season'}
-            placeholder='Select an option'
-          />
-          <Episodes episodes={episodes} />
-        </Route>
-      </Switch>
-    </div>
+    <Router>
+      <div className='App'>
+        <Switch>
+          <Route path='/s:season/e:episode'>
+            <EpisodePage episodeList={episodeList} />
+          </Route>
+          <Route path='/'>
+            <img
+              className='poster-img'
+              src={show.image.original}
+              alt={show.name}
+            />
+            <h1>{show.name}</h1>
+            {parse(show.summary)}
+            <Dropdown
+              options={Object.keys(seasons)}
+              onChange={handleSelect}
+              value={selectedSeason || 'Select a season'}
+              placeholder='Select an option'
+            />
+            <Episodes episodes={episodes} />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }

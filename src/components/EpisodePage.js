@@ -10,8 +10,6 @@ const EpisodePage = ({ episodeList }) => {
       item.number === Number(params.episode)
   );
 
-  console.log(episodeList);
-
   return (
     <div className='episode episode-solo'>
       {episode.image && (
