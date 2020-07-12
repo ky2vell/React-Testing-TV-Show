@@ -104,3 +104,12 @@ p.episode-runtime {
   margin-top: 8px;
   font-size: 0.8rem;
 }
+
+.episode-solo {
+  width: 350px;
+  margin: 3rem auto 0;
+}
+
+.episode-image-solo {
+  width: 350px;
+}
