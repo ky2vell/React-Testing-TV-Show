@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import Episodes from './Episodes';
 
 const episodeData = [
@@ -71,7 +72,11 @@ const episodeData = [
 test('re-renders correctly with list of 3 episodes', () => {
   const { rerender, getAllByTestId } = render(<Episodes episodes={[]} />);
 
-  rerender(<Episodes episodes={episodeData} />);
+  rerender(
+    <MemoryRouter>
+      <Episodes episodes={episodeData} />
+    </MemoryRouter>
+  );
   const episodes = getAllByTestId(/episode/i);
 
   expect(episodes).toHaveLength(3);
