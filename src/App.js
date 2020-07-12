@@ -20,9 +20,9 @@ export default function App() {
 
   useEffect(() => {
     fetchShow().then(data => {
+      setEpisodeList(data._embedded.episodes);
       setShow(data);
       setSeasons(formatSeasons(data._embedded.episodes));
-      setEpisodeList(data._embedded.episodes);
     });
   }, []);
 
